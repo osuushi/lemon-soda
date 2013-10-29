@@ -20,14 +20,15 @@ LemonSoda is an alternative which aims to solve these problems.
 
 ***
 
-- [How it works](#how-it-works)
+- [How to use it](#how-to-use-it)
 - [Installing](#installing)
 - [Class names](#class-names)
+- [How it works](#how-it-works)
 - [Requirements and Browser Compatibility](#requirements-and-browser-compatibility)
-	- [Requirements for sixpack](#requirements-for-sixpack)
-	- [Browser compatibility for lemon-soda.js](#browser-compatibility-for-lemon-sodajs)
+    - [Requirements for sixpack](#requirements-for-sixpack)
+    - [Browser compatibility for lemon-soda.js](#browser-compatibility-for-lemon-sodajs)
 
-## How it works
+## How to use it
 
 LemonSoda comes with a command-line tool called `sixpack`, which transforms an entire directory full
 of images into a single JSON file. Once gzipped, this JSON file will only be marginally larger than
@@ -110,6 +111,25 @@ For example, if you call `sixpack pics pics.json -p img`:
 Note: If multiple file paths convert to the same class name, only one of them will be packed, and
 it is undefined which one it will be. In practice, this is easy to avoid.
 
+## How it works
+
+LemonSoda works by encoding your images as data URIs and embedding them in a JSON file, along with
+their dimensions. This leads to far simpler encoding and decoding than traditional sprite sheets
+because it doesn't involve any mapping between spatial coordinates and sprite names, or fiddling 
+with the sprite layout to make it fit compactly in a rectangle. And since it doesn't have to abuse
+CSS features to achieve its result, those features are available for you to use.
+
+Because the images must be encoded in base 64, they gain about 33% in file size. By gzip encoding
+the file before you send it to the client, you will reduce this gain to about 5%, which is 
+comparable to the size increase of a traditional sprite sheet.
+
+On the client side, LemonSoda takes the JSON data from `sixpack` and creates a CSS rule for each
+image. These rules are simple: they simply set the background, width, and height.
+
+In case processing the image data takes a significant amount of time, LemonSoda times itself as it
+runs. If it has blocked for more than 100ms at a time, it interrupts itself for a moment to let the
+event loop run.
+
 ## Requirements and Browser Compatibility
 
 ### Requirements for sixpack
@@ -123,9 +143,3 @@ LemonSoda will work in any modern browser. It will not work in IE8 or below beca
 support data URIs in JavaScript until IE9. If you need to target older versions of IE, the easiest
 way is to fall back to a CSS file using the individual original images.
 
-## Roadmap
-
-- [x] Tool for packing sprites
-- [x] Client side sprite decoding
-- [x] Break client side processing into deferred blocks to prevent GUI pauses
-- [ ] Tool to generate fallback CSS for older browsers
