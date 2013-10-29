@@ -48,31 +48,40 @@ For example, suppose you had the following directory:
 
 You pack them with this command:
 
-    sixpack sprites sprites.json
+```sh
+sixpack sprites sprites.json
+```
 
 To use one of the icons, you put this in your HTML code:
 
-    <div class="sprite-button-left"></div>
+```html
+<div class="sprite-button-left"></div>
+```
 
 And then before the closing body tag, you insert this:
 
-    <script src = "../js/lemon-soda.js"></script>
-    <script>
-        LemonSoda.load("sprites.json");
-    </script>
+```html
+<script src = "../js/lemon-soda.js"></script>
+<script>
+    LemonSoda.load("sprites.json");
+</script>
+```
 
-And that's it. To add anothes sprite, you simply put it in the `sprites/` directory, use `sixpack`
+And that's it. To add anothe sprite, you simply put it in the `sprites/` directory, use `sixpack`
 again, and then it's ready to use. No need to update your CSS or anything else.
 
 ## Installing
 
 To install the sixpack tool, open a terminal and enter this command:
 
-    sudo npm install -g git://github.com/osuushi/lemon-soda.git
+```sh
+sudo npm install -g git://github.com/osuushi/lemon-soda.git
+```
+
 
 Then you will need to include
 [lemon-soda.js](https://github.com/osuushi/lemon-soda/blob/master/js/lemon-soda.js)
-in your HTML code (place it just before the closing `</body>` tag .
+in your HTML code (place it just before the closing `</body>` tag ).
 
 
 ## Class names
