@@ -18,6 +18,8 @@ to your CSS.
 
 LemonSoda is an alternative which aims to solve all of these problems.
 
+***
+
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
 - [LemonSoda](#lemonsoda)
