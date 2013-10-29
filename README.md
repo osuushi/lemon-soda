@@ -54,7 +54,7 @@ To use one of the icons, you put this in your HTML code:
 
     <div class="sprite-button-left"></div>
 
-And then before the closing body tag, you'd insert this:
+And then before the closing body tag, you insert this:
 
     <script src = "../js/lemon-soda.js"></script>
     <script>
@@ -62,7 +62,7 @@ And then before the closing body tag, you'd insert this:
     </script>
 
 And that's it. To add a sprite, you simply put it in the `sprites/` directory, use `sixpack` again,
-and then it's ready to use. No replacing CSS or anything.
+and then it's ready to use. No replacing CSS or anything else.
 
 ## Installing
 
@@ -75,27 +75,22 @@ To install the sixpack tool, open a terminal and enter this command:
 
 Class names are generated as follows:
 
-1. The path is taken relative to the input path.
-
-1. The file extension is stripped off
+1. The path is taken relative to the input path and the file extension is stripped off
 
 1. Any character that isn't a letter or number is replaced with a "-"
 
-1. Any repeated hyphens are condensed
+1. Repeated hyphens are condensed and trailing hyphens are removed
 
-1. Any trailing hyphens are removed
-
-1. A prefix is added to the beginning. It defaults to "sprite" but you can change it with the `-p`
-flag
+1. A prefix is added. It defaults to "sprite" but you can change it with the `-p` flag
 
 For example, if you call `sixpack pics pics.json -p img`:
 
-| Input Path                                    | Class name                                    |
+| Input Path                                    | Class Name                                    |
 | --------------------------------------------- | --------------------------------------------- |
 | pics/foo.png                                  | img-foo                                       |
 | pics/upArrow.png                              | img-upArrow                                   |
 | pics/logo/300x400.jpg                         | img-logo-300x400                              |
-| pics/big button/default (active).png          | img-big-button-default-active                 |
+| pics/big button/state/default (active).png    | img-big-button-state-default-active           |
 
 Note: If multiple file paths convert to the same class name, only one of them will be packed, and
 it is undefined which one it will be.
