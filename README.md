@@ -2,22 +2,31 @@
 
 A flexible alternative to CSS sprite sheets
 
----
+***
 
 Sprite sheets are fairly ubiquitous these days. Experienced developers know that packing all of
 your sprites into a single image is a relatively sure-fire way to speed up page loading. But the
 technique is not without its disadvantages.
 
-For one thing, it locks you into a single format (usually PNG-24). That's not ideal if you have
-some images which are better suited to a different format (say, a small photo, or an animated gif).
-
-For another, it limits what you can do with CSS. You can't use `background-repeat` with a sprite
-sheet, and performing any kind of transformation on sprite tends to be cumbersome. 
+For one thing, it locks you into a single format (usually PNG-24). That's not ideal if you have some
+images which are better suited to a different format (say, a small photo, or an animated gif). For
+another, it limits what you can do with CSS. You can't use `background-repeat` with a sprite sheet,
+and performing any kind of transformation on sprite tends to be cumbersome.
 
 Finally, adding sprites to a sprite sheet while maintaining efficient packing often requires changes
 to your CSS.
 
 LemonSoda is an alternative which aims to solve all of these problems.
+
+**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
+
+- [LemonSoda](#lemonsoda)
+	- [How it works](#how-it-works)
+	- [Installing](#installing)
+	- [Class names](#class-names)
+	- [Requirements and Browser Compatibility](#requirements-and-browser-compatibility)
+		- [Requirements for sixpack](#requirements-for-sixpack)
+		- [Browser compatibility for lemon-soda.js](#browser-compatibility-for-lemon-sodajs)
 
 ## How it works
 
