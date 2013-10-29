@@ -20,15 +20,12 @@ LemonSoda is an alternative which aims to solve all of these problems.
 
 ***
 
-**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
-
-- [LemonSoda](#lemonsoda)
-	- [How it works](#how-it-works)
-	- [Installing](#installing)
-	- [Class names](#class-names)
-	- [Requirements and Browser Compatibility](#requirements-and-browser-compatibility)
-		- [Requirements for sixpack](#requirements-for-sixpack)
-		- [Browser compatibility for lemon-soda.js](#browser-compatibility-for-lemon-sodajs)
+- [How it works](#how-it-works)
+- [Installing](#installing)
+- [Class names](#class-names)
+- [Requirements and Browser Compatibility](#requirements-and-browser-compatibility)
+	- [Requirements for sixpack](#requirements-for-sixpack)
+	- [Browser compatibility for lemon-soda.js](#browser-compatibility-for-lemon-sodajs)
 
 ## How it works
 
