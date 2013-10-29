@@ -70,6 +70,9 @@ To install the sixpack tool, open a terminal and enter this command:
 
     sudo npm install -g git://github.com/osuushi/lemon-soda.git
 
+Then you will need to include [lemon-soda.js](https://github.com/osuushi/lemon-soda/blob/master/js
+/lemon-soda.js) in your HTML code (place it just before the closing `</body>` tag.
+
 
 ## Class names
 
