@@ -61,13 +61,13 @@ To use one of the icons, you put this in your HTML code:
 And then before the closing body tag, you insert this:
 
 ```html
-<script src = "../js/lemon-soda.js"></script>
+<script src="../js/lemon-soda.js"></script>
 <script>
     LemonSoda.load("sprites.json");
 </script>
 ```
 
-And that's it. To add anothe sprite, you simply put it in the `sprites/` directory, use `sixpack`
+And that's it. To add another sprite, you simply put it in the `sprites/` directory, use `sixpack`
 again, and then it's ready to use. No need to update your CSS or anything else.
 
 ## Installing
