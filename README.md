@@ -11,12 +11,12 @@ technique is not without its disadvantages.
 For one thing, it locks you into a single format (usually PNG-24). That's not ideal if you have some
 images which are better suited to a different format (say, a small photo, or an animated gif). For
 another, it limits what you can do with CSS. You can't use `background-repeat` with a sprite sheet,
-and performing any kind of transformation on sprite tends to be cumbersome.
+and performing any kind of transformation on a sprite tends to be cumbersome.
 
-Finally, adding sprites to a sprite sheet while maintaining efficient packing often requires changes
-to your CSS.
+Finally, adding new sprites to a sprite sheet while maintaining efficient packing often requires
+changes to your CSS.
 
-LemonSoda is an alternative which aims to solve all of these problems.
+LemonSoda is an alternative which aims to solve these problems.
 
 ***
 
@@ -46,7 +46,7 @@ For example, suppose you had the following directory:
             logo.jpg
             spinner.gif
 
-You pack this with this command:
+You pack them with this command:
 
     sixpack sprites sprites.json
 
@@ -61,8 +61,8 @@ And then before the closing body tag, you insert this:
         LemonSoda.load("sprites.json");
     </script>
 
-And that's it. To add a sprite, you simply put it in the `sprites/` directory, use `sixpack` again,
-and then it's ready to use. No replacing CSS or anything else.
+And that's it. To add anothes sprite, you simply put it in the `sprites/` directory, use `sixpack`
+again, and then it's ready to use. No need to update your CSS or anything else.
 
 ## Installing
 
@@ -81,7 +81,7 @@ Class names are generated as follows:
 
 1. The path is taken relative to the input path and the file extension is stripped off
 
-1. Any character that isn't a letter or number is replaced with a "-"
+1. Any character that isn't a letter or number is replaced with "-"
 
 1. Repeated hyphens are condensed and trailing hyphens are removed
 
@@ -97,7 +97,7 @@ For example, if you call `sixpack pics pics.json -p img`:
 | pics/big button/state/default (active).png    | img-big-button-state-default-active           |
 
 Note: If multiple file paths convert to the same class name, only one of them will be packed, and
-it is undefined which one it will be.
+it is undefined which one it will be. In practice, this is easy to avoid.
 
 ## Requirements and Browser Compatibility
 
@@ -111,3 +111,10 @@ it is undefined which one it will be.
 LemonSoda will work in any modern browser. It will not work in IE8 or below because IE did not
 support data URIs in JavaScript until IE9. If you need to target older versions of IE, the easiest
 way is to fall back to a CSS file using the individual original images.
+
+## Roadmap
+
+- [x] Tool for packing sprites
+- [x] Client side sprite decoding
+- [x] Break client side processing into deferred blocks to prevent GUI pauses
+- [ ] Tool to generate fallback CSS for older browsers
