@@ -1,4 +1,5 @@
 fs = require 'fs'
+uglify = require 'uglify-js'
 task 'build', "Build all source files", ->
     coffee = require('coffee-script').compile
     fs.readFile './src/sixpack.coffee', 'utf8', (err, data) ->
@@ -9,4 +10,5 @@ task 'build', "Build all source files", ->
         exec 'chmod +x ./bin/sixpack'
     fs.readFile './src/lemon-soda.coffee', 'utf8', (err, data) ->
         throw err if err
-        fs.writeFile './js/lemon-soda.js', coffee data
+        fs.writeFileSync './js/lemon-soda.js', 
+            uglify.minify(coffee(data), fromString: yes).code
