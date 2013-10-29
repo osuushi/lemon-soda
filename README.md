@@ -70,6 +70,8 @@ And then before the closing body tag, you insert this:
 And that's it. To add another sprite, you simply put it in the `sprites/` directory, use `sixpack`
 again, and then it's ready to use. No need to update your CSS or anything else.
 
+Best of all, you can mix formats within the same file. You can have JPEG, PNG-24, PNG-8, and GIF all packed together. And for the 8 bit formats, each image can have its own color palette.
+
 ## Installing
 
 To install the sixpack tool, open a terminal and enter this command:
