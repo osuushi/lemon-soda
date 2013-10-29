@@ -1,0 +1,17 @@
+{
+    "name": "lemon-soda",
+    "version": "0.1.0",
+    "description": "Pack sprites into a single JSON file.",
+    "bin": {
+        "sixpack": "./bin/sixpack"
+    },
+    "dependencies": {
+        "optimist": ">=0.6.0",
+        "node-dir": ">=0.1.2",
+        "gm": ">=1.13.3"
+    },
+    "license": "MIT",
+    "engines": {
+        "node": ">=0.10.21"
+    }
+}

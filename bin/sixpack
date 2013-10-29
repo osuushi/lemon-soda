@@ -1,0 +1,103 @@
+#!/usr/bin/env node
+/*
+Pack a directory of sprites into a JSON file of data URIs.
+*/
+
+
+(function() {
+  var argv, count, dir, done, finishUp, fs, getMimeType, gm, inPath, opt, outPath, path, prefix, result, wait, waitCount, _ref;
+
+  fs = require('fs');
+
+  path = require('path');
+
+  dir = require('node-dir');
+
+  opt = require('optimist');
+
+  gm = require('gm').subClass({
+    imageMagick: true
+  });
+
+  opt = opt.usage("Pack a directory full of images into a json file.\n\nUsage:\n    $0 inputDirectory outputPath [-p class prefix]");
+
+  argv = opt.demand(2).describe('p', "Prefix for generated CSS classes")["default"]('p', "sprite").argv;
+
+  _ref = argv._, inPath = _ref[0], outPath = _ref[1];
+
+  prefix = argv.p;
+
+  getMimeType = function(name) {
+    var extension;
+    extension = name.substring(name.lastIndexOf('.') + 1);
+    switch (extension.toLowerCase()) {
+      case 'png':
+        return 'image/png';
+      case 'jpg':
+        return 'image/jpeg';
+      case 'jpeg':
+        return 'image/jpeg';
+      case 'gif':
+        return 'image/gif';
+    }
+  };
+
+  result = {};
+
+  count = 0;
+
+  waitCount = 0;
+
+  wait = function() {
+    return waitCount++;
+  };
+
+  done = function() {
+    waitCount--;
+    if (!waitCount) {
+      return finishUp();
+    }
+  };
+
+  wait();
+
+  dir.readFiles(inPath, {
+    match: /\.(?:png|jpg|jpeg|gif)$/i,
+    encoding: 'base64'
+  }, function(err, content, filename, next) {
+    var name, sprite;
+    if (err) {
+      throw err;
+    }
+    name = path.relative(inPath, filename);
+    name = name.substring(0, name.lastIndexOf('.'));
+    name = "" + prefix + "-" + (name.replace(/\W/g, '-'));
+    name = name.replace(/-*$/, '');
+    name = name.replace(/-+/, '-');
+    sprite = {};
+    sprite.uri = ("data:" + (getMimeType(filename)) + ";base64,") + content;
+    wait();
+    gm(filename).size(function(err, size) {
+      if (err) {
+        throw err;
+      }
+      sprite.w = size.width;
+      sprite.h = size.height;
+      return done();
+    });
+    result[name] = sprite;
+    count++;
+    return next();
+  }, function(err) {
+    if (err) {
+      throw err;
+    }
+    return done();
+  });
+
+  finishUp = function() {
+    fs.writeFile(outPath, JSON.stringify(result));
+    return console.log("Finished packing " + count + " images into " + outPath);
+  };
+
+}).call(this);
