@@ -11,7 +11,7 @@
         start = new Date
         for name, sprite of sprites
             addRule ".#{name}", "
-            background: url(#{sprite.uri});
+            background: url(#{sprite.uri}) no-repeat;
             width:#{sprite.w}px;
             height:#{sprite.h}px;"
             delete sprites[name]
